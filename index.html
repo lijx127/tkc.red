@@ -8,22 +8,28 @@
 	<style>
 		body{padding:0;margin:0;color:#444;}
 		table{width:98%;border:0;margin:1% auto 0;text-align:center;border-collapse:collapse;border-spacing:0;font:normal 3rem "\5FAE\8F6F\96C5\9ED1";}
-		table th{background:#0090D7;font-weight:normal;font-size:3rem;color:#FFF;}
+		table th{background:#dc302e;font-weight:normal;font-size:3rem;color:#FFF;}
 		table tr:nth-child(odd){background:#F4F4F4;}
 		table td:nth-child(even){color:#C00;}
 		table tr:nth-child(5){background:#73B1E0;color:#FFF;}
 		table tr:hover{background:#73B1E0;color:#FFF;}
 		table td,table th{border:1px solid #EEE;}
+		.top{margin: 0 auto;}
+		.topIntro{width:100%; text-align:center;font-size:3rem;color:#444;}
+		.bottom{margin-top:40px; width:100%; text-align:center;font-size:3rem;color:#444;}
 	</style>
   </head>
 <body>
-铁裤衩TKC新手入门，关注微信公众号：币圈风云
+<div class="top">
+	<div class="topIntro">牢记http://tkc.red  再也不用到处比价了！(3秒更新)</div>
+<div>
+
 <table>
 	 <tr>
 		 <th>平台</th>
 		 <th>现价</th>
-		 <th>最高</th>
-		 <th>最低</th>
+		 <th>卖一</th>
+		 <th>买一</th>
 		 <th>24H总量</th>
 		 <th>涨跌幅</th>
 	 </tr>
@@ -35,11 +41,27 @@
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span></td>
 	 </tr>
+	 <tr id="J_fubt">
+	     <td>富比特</td>
+		 <td><span id="J_price"></span>元</td>
+		 <td><span id="J_max"></span>元</td>
+		 <td><span id="J_min"></span>元</td>
+		 <td><span id="J_amount"></span></td>
+		 <td><span id="J_rise"></span></td>
+	 </tr>
+	 <tr id="J_hksy">
+	     <td>尚亚</td>
+		 <td><span id="J_price"></span>港元</td>
+		 <td><span id="J_max"></span>港元</td>
+		 <td><span id="J_min"></span>港元</td>
+		 <td><span id="J_amount"></span></td>
+		 <td><span id="J_rise"></span>%</td>
+	 </tr>
 	 
 </table>
-<ul>
-	
-</ul>
+<div class="bottom">
+	<div class="bottomAds">铁裤衩TKC玩法分享，关注微信公众号：币圈风云</div>
+<div>
 </body>
 </html>
 <script type="text/javascript">
@@ -50,16 +72,51 @@ function setContent(Jname, price, max, min, amount, rise){
 	$(Jname + " #J_amount").text(amount);
 	$(Jname + " #J_rise").text(rise);
 }
+function getTKC(){
+	//集市
+	var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", async:false});
+	boothData = boothData.responseText;
+	boothData = eval('(' + boothData + ')');
+	var boothPrice = boothData.data.price;
+
+	var boothAmount = boothData.data.trade_amount;
+	var boothRise = boothData.data.rise_fall;
+	var boothData2 = $.ajax({url:"https://www.booth.red/api/v1/account/coin/trades?coinType=0&ticks=-1&deviceType=3", async:false});
+	boothData2 = boothData2.responseText;
+	boothData2 = eval('(' + boothData2 + ')');
+	var boothMax = boothData2.data.sells[0].price;
+	var boothMin = boothData2.data.buys[0].price;
+	setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+
+	//尚亚
+	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", async:false});
+	hksyData = hksyData.responseText;
+	hksyData = eval('(' + hksyData + ')');
+
+	var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
+	var hksyMax = hksyData.model.sellprice.substring(0,4);
+	var hksyMin = hksyData.model.buyprice.substring(0,4);
+	var hksyAmount = hksyData.model.count24.substring(0,8);
+	var hksyRise = hksyData.model.range24;
+	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+
+	//富比特
+	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3", async:false});
+	fubtData = fubtData.responseText;
+	fubtData = eval('(' + fubtData + ')');
+
+	var fubtPrice = fubtData.data.p_new;
+	var fubtMax = fubtData.data.sells[0].price;
+	var fubtMin = fubtData.data.buys[0].price;
+	var fubtAmount = "无统计";
+	var fubtRise = "无统计";
+	setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
+}
 $(document).ready(function(){
-  //集市
-  var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", async:false});
-  boothData = boothData.responseText;
-  boothData = eval('(' + boothData + ')');
-  var boothPrice = boothData.data.price;
-  var boothMax = boothData.data.max_price;
-  var boothMin = boothData.data.max_price;
-  var boothAmount = boothData.data.trade_amount;
-  var boothRise = boothData.data.rise_fall;
-  setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+	getTKC();
+	setInterval(function(){
+		  getTKC();
+	}, 3000);
+  
 });
 </script>

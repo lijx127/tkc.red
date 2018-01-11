@@ -1,3 +1,10 @@
+---
+layout: post
+title: "欢迎大家来到买币网"
+description: "买币网，buy13.com,买币网，币圈风云，小道消息"
+tags: [买币网, buy13.com, 币圈风云]
+categories: [币圈风云]
+---
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/lijx127/tkc.red/edit/master/index.md) to maintain and preview the content for your website in Markdown files.

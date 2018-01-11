@@ -4,9 +4,91 @@
     <title>铁裤衩TKC</title>
     <meta name="description" content="铁裤衩TKC入门导航，铁裤衩、TKC">
     <meta name="keywords" content="铁裤衩, 比特币, 莱特币, 以太坊, TKC, 数字货币投资">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<style>
+		body{padding:0;margin:0;font:normal 12px/24px "\5FAE\8F6F\96C5\9ED1";color:#444;}
+		table{width:90%;border:0;margin:100px auto 0;text-align:center;border-collapse:collapse;border-spacing:0;}
+		table th{background:#0090D7;font-weight:normal;line-height:30px;font-size:14px;color:#FFF;}
+		table tr:nth-child(odd){background:#F4F4F4;}
+		table td:nth-child(even){color:#C00;}
+		table tr:nth-child(5){background:#73B1E0;color:#FFF;}
+		table tr:hover{background:#73B1E0;color:#FFF;}
+		table td,table th{border:1px solid #EEE;}
+	</style>
   </head>
 <body>
 铁裤衩TKC新手入门，关注微信公众号：币圈风云
-
+<table>
+	 <tr>
+		 <th>平台</th>
+		 <th>当前价格</th>
+		 <th>最高成交</th>
+		 <th>最低成交</th>
+		 <th>成交总量</th>
+		 <th>涨跌幅</th>
+	 </tr>
+	 <tr id="J_booth">
+	     <td>集市</td>
+		 <td id="J_price">xHTML+CSS</td>
+		 <td id="J_max">HTML5+CSS3</td>
+		 <td id="J_min">Javascript</td>
+		 <td id="J_amount">jQurey</td>
+		 <td id="J_rise">jQurey</td>
+	 </tr>
+	 <tr>
+		 <td>xHTML+CSS</td>
+		 <td>HTML5+CSS3</td>
+		 <td>Javascript</td>
+		 <td>jQurey</td>
+	 </tr>
+	 <tr>
+		 <td>xHTML+CSS</td>
+		 <td>HTML5+CSS3</td>
+		 <td>Javascript</td>
+		 <td>jQurey</td>
+	 </tr>
+	 <tr>
+		 <td>xHTML+CSS</td>
+		 <td>HTML5+CSS3</td>
+		 <td>Javascript</td>
+		 <td>jQurey</td>
+	 </tr>
+	 <tr>
+		 <td>xHTML+CSS</td>
+		 <td>HTML5+CSS3</td>
+		 <td>Javascript</td>
+		 <td>jQurey</td>
+	 </tr>
+	 <tr>
+		 <td>xHTML+CSS</td>
+		 <td>HTML5+CSS3</td>
+		 <td>Javascript</td>
+		 <td>jQurey</td>
+	 </tr>
+</table>
+<ul>
+	
+</ul>
 </body>
 </html>
+<script type="text/javascript">
+function setContent(Jname, price, max, min, amount, rise){
+	$(Jname + " #J_price").text(price);
+	$(Jname + " #J_max").text(max);
+	$(Jname + " #J_min").text(min);
+	$(Jname + " #J_amount").text(amount);
+	$(Jname + " #J_rise").text(rise);
+}
+$(document).ready(function(){
+  //集市
+  var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", async:false});
+  boothData = boothData.responseText;
+  boothData = eval('(' + boothData + ')');
+  var boothPrice = boothData.data.price;
+  var boothMax = boothData.data.max_price;
+  var boothMin = boothData.data.max_price;
+  var boothAmount = boothData.data.trade_amount;
+  var boothRise = boothData.data.rise_fall;
+  setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+});
+</script>

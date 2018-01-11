@@ -4,6 +4,7 @@
     <title>铁裤衩TKC</title>
     <meta name="description" content="铁裤衩TKC入门导航，铁裤衩、TKC">
     <meta name="keywords" content="铁裤衩, 比特币, 莱特币, 以太坊, TKC, 数字货币投资">
+	<meta name="viewport" content="height = [pixel_value | device-height] ,width = [pixel_value | device-width ] ,initial-scale = float_value ,minimum-scale = float_value ,maximum-scale = float_value ,user-scalable = [yes | no] ,target-densitydpi = [dpi_value | device-dpi | high-dpi | medium-dpi | low-dpi]" />
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<style>
 		body{padding:0;margin:0;color:#444;}
@@ -76,12 +77,12 @@ function getNowFormatDate() {
     var date = new Date();
     var seperator1 = "-";
     var seperator2 = ":";   
-    var strDate = date.getDate();    
+    var strDate = date.getSeconds();    
     if (strDate >= 0 && strDate <= 9) {
         strDate = "0" + strDate;
     }
     var currentdate = date.getHours() + seperator2 + date.getMinutes()
-            + seperator2 + date.getSeconds();
+            + seperator2 + strDate;
     return currentdate;
 }
 function getTKC(){

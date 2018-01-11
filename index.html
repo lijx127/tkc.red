@@ -15,13 +15,13 @@
 		table tr:hover{background:#73B1E0;color:#FFF;}
 		table td,table th{border:1px solid #EEE;}
 		.top{margin: 0 auto;}
-		.topIntro{width:100%; text-align:center;font-size:3rem;color:#444;}
-		.bottom{margin-top:40px; width:100%; text-align:center;font-size:3rem;color:#444;}
+		.topIntro{width:100%; text-align:center;font-size:2rem;color:#444;}
+		.bottom{margin-top:40px; width:100%; text-align:center;font-size:2rem;color:#444;}
 	</style>
   </head>
 <body>
 <div class="top">
-	<div class="topIntro">牢记http://tkc.red  再也不用到处比价了！(3秒更新)</div>
+	<div class="topIntro">牢记http://tkc.red  再也不用到处比价了！(<span id="J_uptime"></span>更新)</div>
 <div>
 
 <table>
@@ -60,7 +60,7 @@
 	 
 </table>
 <div class="bottom">
-	<div class="bottomAds">铁裤衩TKC玩法分享，关注微信公众号：币圈风云</div>
+	<div class="bottomAds"></div>
 <div>
 </body>
 </html>
@@ -72,7 +72,21 @@ function setContent(Jname, price, max, min, amount, rise){
 	$(Jname + " #J_amount").text(amount);
 	$(Jname + " #J_rise").text(rise);
 }
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";   
+    var strDate = date.getDate();    
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+}
 function getTKC(){
+	var nowTime = getNowFormatDate();
+	$("#J_uptime").text(nowTime);
 	//集市
 	var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", async:false});
 	boothData = boothData.responseText;
@@ -96,7 +110,7 @@ function getTKC(){
 	var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
 	var hksyMax = hksyData.model.sellprice.substring(0,4);
 	var hksyMin = hksyData.model.buyprice.substring(0,4);
-	var hksyAmount = hksyData.model.count24.substring(0,8);
+	var hksyAmount = hksyData.model.count24.substring(0,5);
 	var hksyRise = hksyData.model.range24;
 	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 
@@ -108,8 +122,8 @@ function getTKC(){
 	var fubtPrice = fubtData.data.p_new;
 	var fubtMax = fubtData.data.sells[0].price;
 	var fubtMin = fubtData.data.buys[0].price;
-	var fubtAmount = "无统计";
-	var fubtRise = "无统计";
+	var fubtAmount = "无";
+	var fubtRise = "无";
 	setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 }
 $(document).ready(function(){

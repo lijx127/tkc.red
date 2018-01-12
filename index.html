@@ -63,6 +63,7 @@
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
+	 
 	 <tr id="J_ceo">
 	     <td><a href="https://bite.ceo/tkc.jsp" target="_blank">CEO</a></td>
 		 <td><span id="J_price"></span>ing</td>
@@ -71,6 +72,7 @@
 		 <td><span id="J_amount"></span>ing</td>
 		 <td><span id="J_rise"></span>ing</td>
 	 </tr>
+	 
 	 
 </table>
 <div class="bottom">
@@ -145,6 +147,20 @@ function getTKC(){
 		setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 	}});
 	
+	//比特金融
+    /*
+	var usacoinData = $.ajax({url:"http://www.usacoinmarket.com/api/trade/all/", 
+	success:function(data){
+		console.log(data);
+		usacoinData = data;
+		var usacoinPrice = usacoinData.tkc_cny.new_price;
+		var usacoinMax = usacoinData.tkc_cny.sell_price;
+		var usacoinMin = usacoinData.tkc_cny.buy_price;
+		var usacoinAmount = usacoinData.tkc_cny.amount;
+		var usacoinRise = "无";
+		setContent("#J_usacoin", usacoinPrice, usacoinMax, usacoinMin, usacoinAmount, usacoinRise);
+	}});
+	*/
 }
 $(document).ready(function(){
 	setTimeout(function(){

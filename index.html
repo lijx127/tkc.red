@@ -143,9 +143,12 @@ function getTKC(){
 	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 }
 $(document).ready(function(){
-	getTKC();
+
+	setTimeout(function(){
+		getTKC();
+	},100);
 	setInterval(function(){
-		  getTKC();
+	    getTKC();
 	}, 3000);
   
 });

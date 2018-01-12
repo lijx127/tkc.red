@@ -17,9 +17,11 @@
 		table td,table th{border:1px solid #EEE;}
 		.top{margin: 0 auto; background:#ccc;}
 		.topIntroL{float:left; margin:1rem; text-align:center;font-size:2rem;color:#444;}
-		.topIntroR{float:right; margin:1rem; text-align:center;font-size:2rem;color:#444;}
+		.topIntroR{float:right; margin:2rem; text-align:center;font-size:2rem;color:#444;}
 		.logo{font-size:4rem; color:red;}
 		.bottom{margin-top:40px; width:100%; text-align:center;font-size:1rem;color:#444;}
+		a:link {color: #444} 
+		a:visited {color: #444}
 	</style>
   </head>
 <body>
@@ -38,7 +40,7 @@
 		 <th>涨跌幅</th>
 	 </tr>
 	 <tr id="J_booth">
-	     <td>集市</td>
+	     <td><a href="https://www.booth.red/#/market" target="_blank">集市</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
@@ -46,7 +48,7 @@
 		 <td><span id="J_rise"></span></td>
 	 </tr>
 	 <tr id="J_fubt">
-	     <td>富比特</td>
+	     <td><a href="https://www.fubt.top/trade/cny_coin.html?tradeId=14&type=2" target="_blank">富比特</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
@@ -54,7 +56,7 @@
 		 <td><span id="J_rise"></span></td>
 	 </tr>
 	 <tr id="J_hksy">
-	     <td>尚亚</td>
+	     <td><a href="https://www.hksy.com/#/tradeCenter?payCoinName=HKD&coinName=TKC" target="_blank">尚亚</a></td>
 		 <td><span id="J_price"></span>港</td>
 		 <td><span id="J_max"></span>港</td>
 		 <td><span id="J_min"></span>港</td>
@@ -62,7 +64,7 @@
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
 	 <tr id="J_ceo">
-	     <td>CEO</td>
+	     <td><a href="https://bite.ceo/tkc.jsp" target="_blank">CEO</a></td>
 		 <td><span id="J_price"></span>ing</td>
 		 <td><span id="J_max"></span>ing</td>
 		 <td><span id="J_min"></span>ing</td>
@@ -114,17 +116,7 @@ function getTKC(){
 	var boothMin = boothData2.data.buys[0].price;
 	setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
 
-	//尚亚
-	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", async:false});
-	hksyData = hksyData.responseText;
-	hksyData = eval('(' + hksyData + ')');
-
-	var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
-	var hksyMax = hksyData.model.sellprice.substring(0,4);
-	var hksyMin = hksyData.model.buyprice.substring(0,4);
-	var hksyAmount = hksyData.model.count24.substring(0,5);
-	var hksyRise = hksyData.model.range24;
-	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+	
 
 	//富比特
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3", async:false});
@@ -137,6 +129,18 @@ function getTKC(){
 	var fubtAmount = "无";
 	var fubtRise = "无";
 	setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
+	
+	//尚亚
+	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", async:false});
+	hksyData = hksyData.responseText;
+	hksyData = eval('(' + hksyData + ')');
+
+	var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
+	var hksyMax = hksyData.model.sellprice.substring(0,4);
+	var hksyMin = hksyData.model.buyprice.substring(0,4);
+	var hksyAmount = hksyData.model.count24.substring(0,5);
+	var hksyRise = hksyData.model.range24;
+	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 }
 $(document).ready(function(){
 	getTKC();

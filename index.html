@@ -102,53 +102,54 @@ function getTKC(){
 	var nowTime = getNowFormatDate();
 	$("#J_uptime").text(nowTime);
 	//集市
-	var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", async:true});
-	boothData = boothData.responseText;
-	boothData = eval('(' + boothData + ')');
-	var boothPrice = boothData.data.price;
-
-	var boothAmount = boothData.data.trade_amount;
-	var boothRise = boothData.data.rise_fall;
-	var boothData2 = $.ajax({url:"https://www.booth.red/api/v1/account/coin/trades?coinType=0&ticks=-1&deviceType=3", async:true});
-	boothData2 = boothData2.responseText;
-	boothData2 = eval('(' + boothData2 + ')');
-	var boothMax = boothData2.data.sells[0].price;
-	var boothMin = boothData2.data.buys[0].price;
-	setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
-
+	var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", 
+	success:function(data){
+		boothData = data;		
+		var boothPrice = boothData.data.price;
+		var boothAmount = boothData.data.trade_amount;
+		var boothRise = boothData.data.rise_fall;
+		var boothData2 = $.ajax({url:"https://www.booth.red/api/v1/account/coin/trades?coinType=0&ticks=-1&deviceType=3",
+		success:function(data){
+			boothData2 = data;
+			var boothMax = boothData2.data.sells[0].price;
+			var boothMin = boothData2.data.buys[0].price;
+			setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+		}});
+		
+	}});
 	
-
+	
+	
 	//富比特
-	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3", async:true});
-	fubtData = fubtData.responseText;
-	fubtData = eval('(' + fubtData + ')');
-
-	var fubtPrice = fubtData.data.p_new;
-	var fubtMax = fubtData.data.sells[0].price;
-	var fubtMin = fubtData.data.buys[0].price;
-	var fubtAmount = "无";
-	var fubtRise = "无";
-	setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
+	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3",
+	success:function(data){
+		fubtData = data;
+		var fubtPrice = fubtData.data.p_new;
+		var fubtMax = fubtData.data.sells[0].price;
+		var fubtMin = fubtData.data.buys[0].price;
+		var fubtAmount = "无";
+		var fubtRise = "无";
+		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
+	}});
+	
 	
 	//尚亚
-	var hksyData = $.ajax({
-	url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD",
-	async:true});
-	hksyData = hksyData.responseText;
-	hksyData = eval('(' + hksyData + ')');
-
-	var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
-	var hksyMax = hksyData.model.sellprice.substring(0,4);
-	var hksyMin = hksyData.model.buyprice.substring(0,4);
-	var hksyAmount = hksyData.model.count24.substring(0,5);
-	var hksyRise = hksyData.model.range24;
-	setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", 
+	success:function(data){
+		hksyData = data;
+		var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
+		var hksyMax = hksyData.model.sellprice.substring(0,4);
+		var hksyMin = hksyData.model.buyprice.substring(0,4);
+		var hksyAmount = hksyData.model.count24.substring(0,5);
+		var hksyRise = hksyData.model.range24;
+		setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+	}});
+	
 }
 $(document).ready(function(){
-
 	setTimeout(function(){
 		getTKC();
-	},100);
+	},50);
 	setInterval(function(){
 	    getTKC();
 	}, 3000);

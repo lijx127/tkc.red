@@ -142,7 +142,7 @@ function getTKC(){
 		var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
 		var hksyMax = hksyData.model.sellprice.substring(0,4);
 		var hksyMin = hksyData.model.buyprice.substring(0,4);
-		var hksyAmount = hksyData.model.count24.substring(0,5);
+		var hksyAmount = hksyData.model.count24.substring(0,6);
 		var hksyRise = hksyData.model.range24;
 		setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 	}});

@@ -142,7 +142,7 @@ function getTKC(){
 			
 			if(ceoUpdate >= 5285385){
 			   //update	
-			    console.log(logTime);
+			    console.log(ceoUpdate);
 			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
 			}
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);

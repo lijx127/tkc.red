@@ -137,12 +137,17 @@ function getTKC(){
 			var ceoUpdate = json.update;
 			var nowTime = new Date();
 			nowTime = nowTime.getTime();
-			
-			console.log(nowTime - ceoUpdate);
+			ceoUpdate = nowTime - ceoUpdate;
+			if(ceoUpdate >= 30000){
+			   //update
+			    $.ajax({url:"http://tkc.bcogu.cn/getTKC.php"});
+			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php"});
+			}
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 		},
 		error:function(){
 			//alert('fail');
+			
 		}
 	});
 	

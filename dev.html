@@ -134,6 +134,10 @@ function getTKC(){
 			var ceoMin = json.min;
 			var ceoAmount = json.amount;
 			var ceoRise = json.rise;
+			var ceoUpdate = json.update;
+			var nowTime = new Date();
+			nowTime = nowTime.getTime();
+			console.log(nowTime +"++++"+ceoUpdate);
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 		},
 		error:function(){

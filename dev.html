@@ -140,7 +140,7 @@ function getTKC(){
 			ceoUpdate = nowTime - ceoUpdate;
 			if(ceoUpdate >= 30000){
 			   //update			    
-			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php"});
+			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
 			}
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 		},

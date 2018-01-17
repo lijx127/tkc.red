@@ -134,18 +134,19 @@ function getTKC(){
 			var ceoMin = json.min;
 			var ceoAmount = json.amount;
 			var ceoRise = json.rise;
+			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 			var ceoUpdate = json.update;
 			var nowTime = new Date();
 			var logTime = nowTime;
 			nowTime = nowTime.getTime();
 			ceoUpdate = nowTime - ceoUpdate;
-			console.log("ing..."+ceoUpdate);
+			console.log("ing..."+ceoUpdate);			
 			if(ceoUpdate >= 43273527){
 			   //update	
 			    console.log(ceoUpdate);
 			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
 			}
-			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
+			
 		},
 		error:function(){
 			//alert('fail');

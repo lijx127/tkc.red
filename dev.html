@@ -138,9 +138,10 @@ function getTKC(){
 			var nowTime = new Date();
 			nowTime = nowTime.getTime();
 			ceoUpdate = nowTime - ceoUpdate;
+			console.log(ceoUpdate);
 			if(ceoUpdate >= 30000){
 			   //update			    
-			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
+			    //$.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
 			}
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 		},

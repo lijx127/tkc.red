@@ -136,12 +136,14 @@ function getTKC(){
 			var ceoRise = json.rise;
 			var ceoUpdate = json.update;
 			var nowTime = new Date();
+			var logTime = nowTime;
 			nowTime = nowTime.getTime();
 			ceoUpdate = nowTime - ceoUpdate;
-			console.log(ceoUpdate);
-			if(ceoUpdate >= 30000){
-			   //update			    
-			    //$.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
+			
+			if(ceoUpdate >= 5285385){
+			   //update	
+			    console.log(logTime);
+			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
 			}
 			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
 		},

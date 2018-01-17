@@ -28,7 +28,7 @@
 <div class="top">
 	<div class="topIntroL"><span class="logo">tkc.red</span>  铁裤衩助手</div>
 	<div class="topIntroR">再也不用到处比价了！(<span id="J_uptime"></span>更新)</div>
-<div>
+</div>
 
 <table>
 	 <tr>
@@ -66,11 +66,11 @@
 	 
 	 <tr id="J_ceo">
 	     <td><a href="https://bite.ceo/tkc.jsp" target="_blank">CEO</a></td>
-		 <td><span id="J_price"></span>ing</td>
-		 <td><span id="J_max"></span>ing</td>
-		 <td><span id="J_min"></span>ing</td>
-		 <td><span id="J_amount"></span>ing</td>
-		 <td><span id="J_rise"></span>ing</td>
+		 <td><span id="J_price"></span></td>
+		 <td><span id="J_max"></span></td>
+		 <td><span id="J_min"></span></td>
+		 <td><span id="J_amount"></span></td>
+		 <td><span id="J_rise"></span>%</td>
 	 </tr>
 	 
 	 
@@ -119,8 +119,40 @@ function getTKC(){
 		}});
 		
 	}});
-	
-	
+	//CEO
+	$.ajax({
+		type : "post",
+		url : "http://tkc.bcogu.cn/",
+		timeout:1800,
+		dataType : "jsonp",
+		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+		jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+		success : function(json){
+			
+			var ceoPrice = json.price;
+			var ceoMax = json.max;
+			var ceoMin = json.min;
+			var ceoAmount = json.amount;
+			var ceoRise = json.rise;
+			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
+			var ceoUpdate = json.update;
+			var nowTime = new Date();
+			var logTime = nowTime;
+			nowTime = nowTime.getTime();
+			ceoUpdate = nowTime - ceoUpdate;
+			console.log("ing..."+ceoUpdate);			
+			if(ceoUpdate >= 43273527){
+			   //update	
+			    console.log(ceoUpdate);
+			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
+			}
+			
+		},
+		error:function(){
+			//alert('fail');
+			
+		}
+	});
 	
 	//富比特
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3",

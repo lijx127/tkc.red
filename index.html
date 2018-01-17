@@ -139,10 +139,11 @@ function getTKC(){
 			var ceoUpdate = json.update;
 			var nowTime = new Date();
 			var logTime = nowTime;
+			
 			nowTime = nowTime.getTime();
-			ceoUpdate = nowTime - ceoUpdate;
+			ceoUpdate = parseInt((nowTime-ceoUpdate*1000)/1000);
 			console.log("ing..."+ceoUpdate);			
-			if(ceoUpdate >= 43322218){
+			if(ceoUpdate >= 163205){
 			   //update	
 			    console.log(ceoUpdate);
 			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});

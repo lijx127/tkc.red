@@ -143,11 +143,11 @@ function getTKC(){
 			nowTime = nowTime.getTime();
 			ceoUpdate = parseInt((nowTime-ceoUpdate*1000)/1000);
 			console.log("ing..."+ceoUpdate);			
-			if(ceoUpdate >= 6){
+			//if(ceoUpdate >= 6){
 			   //update	
 			    console.log(ceoUpdate);
 			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
-			}
+			//}
 			
 		},
 		error:function(){

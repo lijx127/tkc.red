@@ -164,7 +164,7 @@ function getTKC(){
 		var fubtMax = fubtData.data[10].sell;
 		var fubtMin = fubtData.data[10].buy;
 		var fubtAmount = fubtData.data[10].total;
-		var fubtRise = fubtData.data[10].rose;
+		var fubtRise = fubtData.data[10].rose.substring(0,4);
 		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 	}});
 	

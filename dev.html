@@ -56,7 +56,7 @@
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
 	 <tr id="J_fubt">
-	     <td><a href="https://www.fubt.top/trade/cny_coin.html?tradeId=14&type=2" target="_blank">富比特</a></td>
+	     <td><a href="https://www.fubt.top/trade/cny_coin.html?tradeId=14&type=2" target="_blank">FuBT</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
@@ -81,7 +81,6 @@
 </div>
 </body>
 </html>
-
 <script type="text/javascript">
 function setContent(Jname, price, max, min, amount, rise){
 	$(Jname + " #J_price").text(price);
@@ -144,11 +143,11 @@ function getTKC(){
 			nowTime = nowTime.getTime();
 			ceoUpdate = parseInt((nowTime-ceoUpdate*1000)/1000);
 			console.log("ing..."+ceoUpdate);			
-			if(ceoUpdate >= 163205){
+			//if(ceoUpdate >= 6){
 			   //update	
 			    console.log(ceoUpdate);
 			    $.ajax({url:"http://tkc.bcogu.cn/updateTKC.php",dataType:"jsonp"});
-			}
+			//}
 			
 		},
 		error:function(){
@@ -158,14 +157,14 @@ function getTKC(){
 	});
 	
 	//富比特
-	var fubtData = $.ajax({url:"https://www.fubt.top/real/market.html?symbol=14&buysellcount=5&successcount=3",
+	var fubtData = $.ajax({url:"https://www.fubt.top/real/indexmarket.html?_t=92",
 	success:function(data){
 		fubtData = data;
-		var fubtPrice = fubtData.data.p_new;
-		var fubtMax = fubtData.data.sells[0].price;
-		var fubtMin = fubtData.data.buys[0].price;
-		var fubtAmount = "无";
-		var fubtRise = "无";
+		var fubtPrice = fubtData.data[9].price;
+		var fubtMax = fubtData.data[9].sell;
+		var fubtMin = fubtData.data[9].buy;
+		var fubtAmount = fubtData.data[9].total;
+		var fubtRise = fubtData.data[9].rose;
 		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 	}});
 	

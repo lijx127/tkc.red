@@ -5,6 +5,8 @@
     <meta name="description" content="铁裤衩TKC入门导航，铁裤衩助手，TKC助手，赤币助手">
     <meta name="keywords" content="铁裤衩,铁裤衩助手，TKC助手，赤链，赤币， 比特币, 莱特币, 以太坊, TKC, 数字货币投资">
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
 	<style>
 		body{padding:0;margin:0;color:#444;}
 		table{width:98%;border:0;margin:1% auto 0;text-align:center;border-collapse:collapse;border-spacing:0;font:normal 3rem "\5FAE\8F6F\96C5\9ED1";}
@@ -49,9 +51,9 @@
 	 </tr>
 	<tr id="J_ceo">
 	     <td><a href="https://bite.ceo/tkc.jsp" target="_blank">CEO</a></td>
-		 <td><span id="J_price"></span></td>
-		 <td><span id="J_max"></span></td>
-		 <td><span id="J_min"></span></td>
+		 <td><span id="J_price"></span>元</td>
+		 <td><span id="J_max"></span>元</td>
+		 <td><span id="J_min"></span>元</td>
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
@@ -65,17 +67,93 @@
 	 </tr>
 	 <tr id="J_hksy">
 	     <td><a href="https://www.hksy.com/#/tradeCenter?payCoinName=HKD&coinName=TKC" target="_blank">尚亚</a></td>
-		 <td><span id="J_price"></span>港</td>
-		 <td><span id="J_max"></span>港</td>
-		 <td><span id="J_min"></span>港</td>
+		 <td><span id="J_price"></span>元</td>
+		 <td><span id="J_max"></span>元</td>
+		 <td><span id="J_min"></span>元</td>
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
-	 </tr>
-	 
-	 
+	 </tr> 
 	 
 	 
 </table>
+<div id="main">
+   <p style="text-align:center;padding:30px;font-size:16px"><a href="index.html">DEMO 1</a> &nbsp;&nbsp;  <a href="index2.html">DEMO 2</a></p>
+	<div class="demo" id="pricePlans">
+		<ul id="plans">
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2>入门型VPS</h2></li>
+					<li class="price"><p>￥149/<span>月</span></p></li>
+					<li>
+						<ul class="options">
+							<li>小型企业、个人首选</li>
+							<li>双核至强处理器</li>
+							<li>1G DDR3 ECC <span>高速纠错内存</span></li>
+							<li>10G + 20G <span>高速企业级硬盘</span></li>
+							<li>1M <span>专线带宽</span></li>
+							<li>1个 <span>独立公网IP</span></li>
+						</ul>
+					</li>
+					<li class="button"><a href="#">点击购买</a></li>
+				</ul>
+			</li>
+
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2 class="bestPlanTitle">进阶型VPS</h2></li>
+					<li class="price"><p class="bestPlanPrice">￥199/月</p></li>
+					<li>
+						<ul class="options">
+							<li>小型企业、个人首选</li>
+							<li>双核至强处理器</li>
+							<li>2G DDR3 ECC <span>高速纠错内存</span></li>
+							<li>10G + 40G <span>高速企业级硬盘</span></li>
+							<li>2M <span>专线带宽</span></li>
+							<li>1个 <span>独立公网IP</span></li>
+						</ul>
+					</li>
+					<li class="button"><a class="bestPlanButton" href="#">点击购买</a></li>
+				</ul>
+			</li>
+
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2>尊贵型VPS</h2></li>
+					<li class="price"><p>￥349/<span>月</span></p></li>
+					<li>
+						<ul class="options">
+							<li>中型企业、个人首选</li>
+							<li>四核至强处理器</li>
+							<li>4G DDR3 ECC <span>高速纠错内存</span></li>
+							<li>10G + 60G <span>高速企业级硬盘</span></li>
+							<li>2M <span>专线带宽</span></li>
+							<li>1个 <span>独立公网IP</span></li>
+						</ul>
+					</li>
+					<li class="button"><a href="#">点击购买</a></li>
+				</ul>
+			</li>
+
+			<li class="plan">
+				<ul class="planContainer">
+					<li class="title"><h2>至尊型VPS</h2></li>
+					<li class="price"><p>￥649/<span>月</span></p></li>
+					<li>
+						<ul class="options">
+							<li>大型企业、个人首选</li>
+							<li>四核至强处理器</li>
+							<li>8G DDR3 ECC <span>高速纠错内存</span></li>
+							<li>10G + 80G <span>高速企业级硬盘</span></li>
+							<li>3M <span>专线带宽</span></li>
+							<li>2个 <span>独立公网IP</span></li>
+						</ul>
+					</li>
+					<li class="button"><a href="#">点击购买</a></li>
+				</ul>
+			</li>
+		</ul> 
+	</div>
+</div>
 <div class="bottom">
 	<div class="bottomAds">战略合作——微信公众号：币圈风云</div>
 </div>
@@ -135,7 +213,10 @@ function getTKC(){
 			var ceoMin = json.min;
 			var ceoAmount = json.amount;
 			var ceoRise = json.rise;
-			setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
+			if(ceoRise){
+				setContent("#J_ceo", ceoPrice, ceoMax, ceoMin, ceoAmount, ceoRise);
+			}
+			
 			var ceoUpdate = json.update;
 			var nowTime = new Date();
 			var logTime = nowTime;
@@ -163,14 +244,14 @@ function getTKC(){
 		var fubtPrice = fubtData.data[8].price;
 		var fubtMax = fubtData.data[8].sell;
 		var fubtMin = fubtData.data[8].buy;
-		var fubtAmount = fubtData.data[10].total;
-		var fubtRise = fubtData.data[10].rose.toString().substring(0,4);
+		var fubtAmount = fubtData.data[8].total;
+		var fubtRise = fubtData.data[8].rose.toString().substring(0,4);
 		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 	}});
 	
 	
 	//尚亚
-	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", 
+	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=USDT", 
 	success:function(data){
 		hksyData = data;
 		var hksyPrice = hksyData.model.newclinchprice.substring(0,4);
@@ -178,7 +259,18 @@ function getTKC(){
 		var hksyMin = hksyData.model.buyprice.substring(0,4);
 		var hksyAmount = hksyData.model.count24.substring(0,6);
 		var hksyRise = hksyData.model.range24;
-		setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+		$.ajax({url:"https://api.hksy.com/pc/basic/v1/usdtRate",
+		       success:function(data){
+			     var usdtRate = data.model;			     
+			     var allRate = usdtRate;
+			      hksyPrice = hksyPrice * allRate;
+			      hksyMax = hksyMax * allRate;
+			      hksyMin = hksyMin * allRate;
+			       if(allRate){
+				   setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+			       }			    
+		       }});
+		
 	}});
 	
 	//比特金融
@@ -202,7 +294,7 @@ $(document).ready(function(){
 	},50);
 	setInterval(function(){
 	    getTKC();
-	}, 3000);
+	}, 6000);
   
 });
 </script>

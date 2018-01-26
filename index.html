@@ -173,7 +173,7 @@ function getTKC(){
 	
 	
 	//尚亚
-	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=HKD", 
+	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=USDT", 
 	success:function(data){
 		hksyData = data;
 		var hksyPrice = hksyData.model.newclinchprice.substring(0,4);

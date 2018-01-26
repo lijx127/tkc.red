@@ -181,7 +181,20 @@ function getTKC(){
 		var hksyMin = hksyData.model.buyprice.substring(0,4);
 		var hksyAmount = hksyData.model.count24.substring(0,6);
 		var hksyRise = hksyData.model.range24;
-		setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+		$.ajax({url:"https://api.hksy.com/pc/basic/v1/usdtRate",
+		       success:function(data){
+			     var usdtRate = data.model;
+			     $.ajax({url:"https://api.hksy.com/pc/basic/v1/rate?from=HKD&to=CNY",
+			       success:function(data){
+				     var cnyRate = data.model;
+				     var allRate = usdtRate * cnyRate;
+				      hksyPrice = hksyPrice * allRate;
+				      hksyMax = hksyMax * allRate;
+				      hksyMin = hksyMin * allRate;
+				     setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+			       }});
+		       }});
+		
 	}});
 	
 	//比特金融

@@ -183,16 +183,12 @@ function getTKC(){
 		var hksyRise = hksyData.model.range24;
 		$.ajax({url:"https://api.hksy.com/pc/basic/v1/usdtRate",
 		       success:function(data){
-			     var usdtRate = data.model;
-			     $.ajax({url:"https://api.hksy.com/pc/basic/v1/rate?from=HKD&to=CNY",
-			       success:function(data){
-				     var cnyRate = data.model;
-				     var allRate = usdtRate * cnyRate;
-				      hksyPrice = hksyPrice * allRate;
-				      hksyMax = hksyMax * allRate;
-				      hksyMin = hksyMin * allRate;
-				     setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
-			       }});
+			     var usdtRate = data.model;			     
+			     var allRate = usdtRate;
+			      hksyPrice = hksyPrice * allRate;
+			      hksyMax = hksyMax * allRate;
+			      hksyMin = hksyMin * allRate;
+			     setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 		       }});
 		
 	}});

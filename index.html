@@ -188,7 +188,9 @@ function getTKC(){
 			      hksyPrice = hksyPrice * allRate;
 			      hksyMax = hksyMax * allRate;
 			      hksyMin = hksyMin * allRate;
-			     setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+			       if(allRate){
+				   setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
+			       }			    
 		       }});
 		
 	}});

@@ -54,7 +54,7 @@ html,html a {
 }
 
 .planContainer .title h2 {
-	font-size: 2.125em;
+	font-size: 2.5em;
 	font-weight: 300;
 	color: #3e4f6a;
 	margin: 0;
@@ -83,7 +83,7 @@ html,html a {
 	background: -ms-linear-gradient(top, #475975, #364761);
 	background: linear-gradient(top, #475975, #364761);
 	color: #fff;
-	font-size: 1.2em;
+	font-size: 2em;
 	font-weight: 700;
 	height: 2.6em;
 	line-height: 2.6em;

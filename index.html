@@ -248,11 +248,11 @@ function getTKC(){
 			     var usdtRate = data.model;			     
 			     var allRate = usdtRate;
 			      hksyPrice = hksyPrice * allRate;
-			      hksyPrice = hksyPrice.substring(0,4);
+			      hksyPrice = hksyPrice.toString().substring(0,4);
 			      hksyMax = hksyMax * allRate;
-			       hksyMax = hksyMax.substring(0,4);
+			       hksyMax = hksyMax.toString().substring(0,4);
 			      hksyMin = hksyMin * allRate;
-			       hksyMin = hksyMin.substring(0,4);
+			       hksyMin = hksyMin.toString().substring(0,4);
 			       if(allRate){
 				   setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 			       }			    

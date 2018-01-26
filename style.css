@@ -5,7 +5,6 @@ html,html a {
 
 
 #plans,#plans ul,#plans ul li {
-	font-size: 2em;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -106,7 +105,6 @@ html,html a {
 .planContainer .options li {
 	font-weight: 700;
 	color: #364762;
-	font-size: 2em;
 	line-height: 2.5;
 }
 

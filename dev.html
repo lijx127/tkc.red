@@ -87,11 +87,11 @@
 </table>
 留言板——人人可参与 (关注微信公众号：币圈风云，回复：留言)
 <ul id="J_message">
-    	<li id="J_price"></li>
-    	<li id="J_max"></li>
-	<li id="J_min"></li>
-	<li id="J_amount"></li>
-	<li id="J_rise"></li>
+	<li><span id="J_price"></span><span id="time1"></span></li>
+    	<li><span id="J_max"></span><span id="time2"></span></li>
+	<li><span id="J_min"></span><span id="time3"></span></li>
+	<li><span id="J_amount"></span><span id="time4"></span></li>
+	<li><span id="J_rise"></span><span id="time5"></span></li>
 </ul>
 	
 	
@@ -168,6 +168,18 @@ function setContent(Jname, price, max, min, amount, rise){
 	$(Jname + " #J_min").text(min);
 	$(Jname + " #J_amount").text(amount);
 	$(Jname + " #J_rise").text(rise);
+}
+function setContentMess(Jname, price, max, min, amount, rise,time1,time2,time3,time4,time5){
+	$(Jname + " #J_price").text(price);
+	$(Jname + " #J_max").text(max);
+	$(Jname + " #J_min").text(min);
+	$(Jname + " #J_amount").text(amount);
+	$(Jname + " #J_rise").text(rise);
+	$(Jname + " #time1").text(time1);
+	$(Jname + " #time2").text(time2);
+	$(Jname + " #time3").text(time3);
+	$(Jname + " #time4").text(time4);
+	$(Jname + " #time5").text(time5);
 }
 function getNowFormatDate() {
     var date = new Date();
@@ -295,7 +307,12 @@ function getTKC(){
 			var content3 = json[2].content;
 			var content4 = json[3].content;
 			var content5 = json[3].content;
-			setContent("#J_message", content1, content2, content3, content4, content5);			
+			var time1 = json[0].time;
+			var time2 = json[1].time;
+			var time3 = json[2].time;
+			var time4 = json[3].time;
+			var time5 = json[3].time;
+			setContentMess("#J_message", content1, content2, content3, content4, content5,time1,time2,time3,time4,time5);			
 			
 		},
 		error:function(){

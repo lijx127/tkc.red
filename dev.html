@@ -297,15 +297,15 @@ function getTKC(){
 		success : function(json){
 			
 			var content1 = json[0].content;
-			content1 = content1.substring(120);
+			content1 = content1.substring(0,Math.Min(120,content1.Length));
 			var content2 = json[1].content;
-			content2 = content2.substring(120);
+			content2 = content2.substring(0,Math.Min(120,content2.Length));
 			var content3 = json[2].content;
-			content3 = content3.substring(120);
+			content3 = content3.substring(0,Math.Min(120,content3.Length));
 			var content4 = json[3].content;
-			content4 = content4.substring(120);
+			content4 = content4.substring(0,Math.Min(120,content4.Length));
 			var content5 = json[3].content;
-			content5 = content5.substring(120);
+			content5 = content5.substring(0,Math.Min(120,content5.Length));
 			var time1 = json[0].time;
 			var time2 = json[1].time;
 			var time3 = json[2].time;

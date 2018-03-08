@@ -74,9 +74,20 @@
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
 	 </tr> 
+	<tr id="J_message">
+	     <td><a href="https://www.hksy.com/#/tradeCenter?payCoinName=HKD&coinName=TKC" target="_blank">尚亚</a></td>
+		 <td><span id="J_price"></span>元</td>
+		 <td><span id="J_max"></span>元</td>
+		 <td><span id="J_min"></span>元</td>
+		 <td><span id="J_amount"></span></td>
+		 <td><span id="J_rise"></span>%</td>
+	 </tr> 
 	 
 	 
 </table>
+	
+	
+	
 <div id="main">
    <!--<p style="text-align:center;padding:30px;font-size:16px"><a href="index.html">DEMO 1</a> &nbsp;&nbsp;  <a href="index2.html">DEMO 2</a></p>-->
 	<div class="demo" id="pricePlans">
@@ -185,7 +196,7 @@ function getTKC(){
 	//CEO
 	$.ajax({
 		type : "post",
-		url : "http://tkc.bcogu.cn/",
+		url : "http://tkc.izdvy.cn",
 		timeout:1800,
 		dataType : "jsonp",
 		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
@@ -248,12 +259,24 @@ function getTKC(){
 			     var usdtRate = data.model;			     
 			     var allRate = usdtRate;
 			      hksyPrice = hksyPrice * allRate;
+			      hksyPrice = hksyPrice.toString().substring(0,4);
 			      hksyMax = hksyMax * allRate;
+			       hksyMax = hksyMax.toString().substring(0,4);
 			      hksyMin = hksyMin * allRate;
+			       hksyMin = hksyMin.toString().substring(0,4);
 			       if(allRate){
 				   setContent("#J_hksy", hksyPrice, hksyMax, hksyMin, hksyAmount, hksyRise);
 			       }			    
 		       }});
+		
+	}});
+	
+	
+	//留言板
+	var leaveMessage = $.ajax({url:"http://tkc.izdvy.cn/getMessage.php", 
+	success:function(data){
+		 var content = data[0].content;
+		 setContent("#J_message", content);
 		
 	}});
 	

@@ -283,8 +283,12 @@ function getTKC(){
 		jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
 		success : function(json){
 			
-			var content = json[0].content;
-			setContent("#J_message", content);
+			var content1 = json[0].content;
+			var content2 = json[0].content;
+			var content3 = json[0].content;
+			var content4 = json[0].content;
+			var content5 = json[0].content;
+			setContent("#J_message", content1, content2, content3, content4, content5);
 			
 			
 		},

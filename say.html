@@ -22,6 +22,7 @@
     .layui-main { position: relative; }
     .logo { position: absolute; left: 30px; top: 18px; }
   </style>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body>
 <div class="layui-header header header-doc">
@@ -40,4 +41,15 @@
 </form> 
 
 </body>
+<script type="text/javascript">
+  $(".subBtn").click(function(){
+  $.post("http://tkc.izdvy.cn/addMessage.php",
+  {
+    message:"Donald Duck"
+  },
+  function(data,status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+</script>
 </html>

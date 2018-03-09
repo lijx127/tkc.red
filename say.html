@@ -8,7 +8,7 @@
     height: 38px;
     line-height: 38px;
     padding: 0 18px;
-    margin-left:20px;
+    margin-left:50px;
     margin-top:10px;
     background-color: #009688;
     color: #fff;
@@ -38,13 +38,13 @@
 <textarea id="J_text" name="message" style="display:block; width:90%; margin:5px auto; min-height:160px; font-size:1.4rem;">
 
 </textarea>
-<input class="subBtn" type="button" value="留言">
+<input id="J_submit" class="subBtn" type="button" value="留言">
   <a class="subBtn" href="http://tkc.red">点击进入铁裤衩助手</a>
 </form> 
 
 </body>
 <script type="text/javascript">
-  $(".subBtn").click(function(){
+  $("#J_submit").click(function(){
   $.post("http://tkc.izdvy.cn/addMessage.php",
   {
     message:$("#J_text").val()

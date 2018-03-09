@@ -212,6 +212,35 @@ function getTKC(){
 		}});
 		
 	}});
+	//留言板
+	
+	$.ajax({
+		type : "post",
+		url : "http://tkc.izdvy.cn/getMessage.php",
+		timeout:1800,
+		dataType : "jsonp",
+		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+		jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+		success : function(json){
+			
+			var content1 = json[0].content;			
+			var content2 = json[1].content;			
+			var content3 = json[2].content;			
+			var content4 = json[3].content;			
+			var content5 = json[4].content;			
+			var time1 = json[0].time;
+			var time2 = json[1].time;
+			var time3 = json[2].time;
+			var time4 = json[3].time;
+			var time5 = json[3].time;
+			setContentMess("#J_message", content1, content2, content3, content4, content5,time1,time2,time3,time4,time5);			
+			
+		},
+		error:function(){
+			//alert('fail');
+			
+		}
+	});
 	//CEO
 	$.ajax({
 		type : "post",
@@ -291,35 +320,7 @@ function getTKC(){
 	}});
 	
 	
-	//留言板
 	
-	$.ajax({
-		type : "post",
-		url : "http://tkc.izdvy.cn/getMessage.php",
-		timeout:1800,
-		dataType : "jsonp",
-		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
-		jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
-		success : function(json){
-			
-			var content1 = json[0].content;			
-			var content2 = json[1].content;			
-			var content3 = json[2].content;			
-			var content4 = json[3].content;			
-			var content5 = json[4].content;			
-			var time1 = json[0].time;
-			var time2 = json[1].time;
-			var time3 = json[2].time;
-			var time4 = json[3].time;
-			var time5 = json[3].time;
-			setContentMess("#J_message", content1, content2, content3, content4, content5,time1,time2,time3,time4,time5);			
-			
-		},
-		error:function(){
-			//alert('fail');
-			
-		}
-	});
 	
 	//比特金融
     /*

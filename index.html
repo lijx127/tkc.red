@@ -25,6 +25,15 @@
 		a:link {color: #444} 
 		a:visited {color: #444}
 		.demo{width:100%; margin:2px auto 10px auto}
+		#messageTitle {font-size:1.6rem;color:#444; padding:20px; margin-left:5%;}
+		#J_message {    
+		font-size: 1.2rem;color:#444; margin-left: 5%; margin-right: 5%; padding: 20px;
+    		background-color: #C7EDCC;
+    		-webkit-box-shadow: 3px 3px 3px;
+   		-moz-box-shadow: 3px 3px 3px;
+   		box-shadow: 5px 5px 5px;		
+		}
+		#J_message li { line-height:2.5rem;border-bottom: 1px dashed;padding-top: 15px;}
 	</style>
   </head>
 <body>
@@ -75,8 +84,17 @@
 		 <td><span id="J_rise"></span>%</td>
 	 </tr> 
 	 
-	 
 </table>
+<div id="messageTitle">留言板——人人可参与 (关注微信公众号：币圈风云，回复：留言)</div>
+<ul id="J_message">
+	<li><span id="J_price"></span> —— <span id="time1"></span></li>
+    	<li><span id="J_max"></span> —— <span id="time2"></span></li>
+	<li><span id="J_min"></span> —— <span id="time3"></span></li>
+	<li><span id="J_amount"></span> —— <span id="time4"></span></li>
+	<li><span id="J_rise"></span> —— <span id="time5"></span></li>
+</ul>
+	
+	
 <div id="main">
    <!--<p style="text-align:center;padding:30px;font-size:16px"><a href="index.html">DEMO 1</a> &nbsp;&nbsp;  <a href="index2.html">DEMO 2</a></p>-->
 	<div class="demo" id="pricePlans">
@@ -151,6 +169,18 @@ function setContent(Jname, price, max, min, amount, rise){
 	$(Jname + " #J_amount").text(amount);
 	$(Jname + " #J_rise").text(rise);
 }
+function setContentMess(Jname, price, max, min, amount, rise,time1,time2,time3,time4,time5){
+	$(Jname + " #J_price").text(price);
+	$(Jname + " #J_max").text(max);
+	$(Jname + " #J_min").text(min);
+	$(Jname + " #J_amount").text(amount);
+	$(Jname + " #J_rise").text(rise);
+	$(Jname + " #time1").text(time1);
+	$(Jname + " #time2").text(time2);
+	$(Jname + " #time3").text(time3);
+	$(Jname + " #time4").text(time4);
+	$(Jname + " #time5").text(time5);
+}
 function getNowFormatDate() {
     var date = new Date();
     var seperator1 = "-";
@@ -182,6 +212,35 @@ function getTKC(){
 		}});
 		
 	}});
+	//留言板
+	
+	$.ajax({
+		type : "post",
+		url : "http://tkc.izdvy.cn/getMessage.php",
+		timeout:1800,
+		dataType : "jsonp",
+		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+		jsonpCallback:"success_jsonpCallbackdd",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+		success : function(json){
+			
+			var content1 = json[0].content;			
+			var content2 = json[1].content;			
+			var content3 = json[2].content;			
+			var content4 = json[3].content;			
+			var content5 = json[4].content;			
+			var time1 = json[0].time;
+			var time2 = json[1].time;
+			var time3 = json[2].time;
+			var time4 = json[3].time;
+			var time5 = json[3].time;
+			setContentMess("#J_message", content1, content2, content3, content4, content5,time1,time2,time3,time4,time5);			
+			
+		},
+		error:function(){
+			//alert('fail');
+			
+		}
+	});
 	//CEO
 	$.ajax({
 		type : "post",
@@ -259,6 +318,9 @@ function getTKC(){
 		       }});
 		
 	}});
+	
+	
+	
 	
 	//比特金融
     /*

@@ -338,7 +338,7 @@ function getTKC(){
 		digifinexMin = digifinexMin.toString().substring(0,5);
 		var digifinexAmount = digifinexData.currency_list["24H_done_num"];
 		digifinexAmount = digifinexAmount.toString().substring(0,8);
-		var digifinexRise = digifinexData.currency_list["24H_change_status"];
+		var digifinexRise = digifinexData.currency_list["24H_change_rate"];
 	
 		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
 	}});

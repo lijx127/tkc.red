@@ -331,15 +331,15 @@ function getTKC(){
 		digifinexData = data;
 		var basermb = digifinexData.currency_list.basermb;
 		var digifinexPrice = digifinexData.currency_list.new_price * basermb;
-		digifinexPrice = digifinexPrice.toString().substring(0,5);
-		var digifinexMax = digifinexData.currency_list.sell_one_price * basermb;
-		digifinexMax = digifinexMax.toString().substring(0,5);
-		var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
-		digifinexMin = digifinexMin.toString().substring(0,5);
-		var digifinexAmount = digifinexData.currency_list["24H_done_num"];
-		digifinexAmount = digifinexAmount.toString().substring(0,8);
-		var digifinexRise = digifinexData.currency_list["24H_change_rate"];
 		if(digifinexPrice){
+			digifinexPrice = digifinexPrice.toString().substring(0,5);
+			var digifinexMax = digifinexData.currency_list.sell_one_price * basermb;
+			digifinexMax = digifinexMax.toString().substring(0,5);
+			var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
+			digifinexMin = digifinexMin.toString().substring(0,5);
+			var digifinexAmount = digifinexData.currency_list["24H_done_num"];
+			digifinexAmount = digifinexAmount.toString().substring(0,8);
+			var digifinexRise = digifinexData.currency_list["24H_change_rate"];
 			setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
 		}
 	}});

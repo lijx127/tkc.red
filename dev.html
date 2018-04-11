@@ -336,7 +336,7 @@ function getTKC(){
 		digifinexMax = digifinexMax.toString().substring(0,4);
 		var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
 		digifinexMin = digifinexMin.toString().substring(0,4);
-		var digifinexAmount = 1;
+		var digifinexAmount = digifinexData.currency_list."24H_done_num";
 		var digifinexRise = 2;
 		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
 	}});

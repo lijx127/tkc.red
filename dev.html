@@ -329,9 +329,10 @@ function getTKC(){
 	var digifinexData = $.ajax({url:"https://www.digifinex.com/cron/currency_list_handle?basemark=USDT&trademark=EOS&block=1", 
 	success:function(data){
 		digifinexData = data;
-		var digifinexPrice = digifinexData.currency_list.new_price;
-		var digifinexMax = digifinexData.currency_list.sell_one_price;
-		var digifinexMin = digifinexData.currency_list.buy_one_price;
+		var basermb = digifinexData.currency_list.basermb;
+		var digifinexPrice = digifinexData.currency_list.new_price * basermb;
+		var digifinexMax = digifinexData.currency_list.sell_one_price * basermb;
+		var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
 		var digifinexAmount = 1;
 		var digifinexRise = 2;
 		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);

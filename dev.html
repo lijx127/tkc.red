@@ -326,7 +326,7 @@ function getTKC(){
 	*/
 	
 	//数字币
-	var digifinexData = $.ajax({url:"https://www.digifinex.com/cron/currency_list_handle?basemark=USDT&trademark=EOS&block=1", 
+	var digifinexData = $.ajax({url:"https://www.digifinex.com/cron/currency_list_handle?basemark=ETH&trademark=TKC&block=1", 
 	success:function(data){
 		digifinexData = data;
 		var basermb = digifinexData.currency_list.basermb;
@@ -339,8 +339,9 @@ function getTKC(){
 		var digifinexAmount = digifinexData.currency_list["24H_done_num"];
 		digifinexAmount = digifinexAmount.toString().substring(0,8);
 		var digifinexRise = digifinexData.currency_list["24H_change_rate"];
-	
-		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
+		if(digifinexPrice){
+			setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
+		}
 	}});
 	
 	

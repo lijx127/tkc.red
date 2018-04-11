@@ -33,7 +33,7 @@
    		-moz-box-shadow: 3px 3px 3px;
    		box-shadow: 5px 5px 5px;		
 		}
-		#J_message li { line-height:2.5rem;border-bottom: 1px dashed;padding-top: 15px;}
+		#J_message li { font-size:1.2rem;line-height:2.5rem;border-bottom: 1px dashed;padding-top: 15px;}
 	</style>
   </head>
 <body>
@@ -52,7 +52,7 @@
 		 <th>涨跌幅</th>
 	 </tr>
 	 <tr id="J_booth">
-	     <td><a href="https://www.booth.red/#/market" target="_blank">集市</a></td>
+	     <td><a href="https://www.booth.red/" target="_blank">集市</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
@@ -60,7 +60,7 @@
 		 <td><span id="J_rise"></span></td>
 	 </tr>
 	<tr id="J_ceo">
-	     <td><a href="https://bite.ceo/tkc.jsp" target="_blank">CEO</a></td>
+	     <td><a href="https://ceo.bi/tkc.jsp" target="_blank">CEO</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
@@ -75,14 +75,18 @@
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
-	 <tr id="J_hksy">
-	     <td><a href="https://www.hksy.com/#/tradeCenter?payCoinName=HKD&coinName=TKC" target="_blank">尚亚</a></td>
+	<tr id="J_digifinex">
+	     <td><a href="https://www.digifinex.com/from/8vgr4e" target="_blank">数字币</a></td>
 		 <td><span id="J_price"></span>元</td>
 		 <td><span id="J_max"></span>元</td>
 		 <td><span id="J_min"></span>元</td>
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
-	 </tr> 
+	 </tr>
+	 <tr id="J_hksy">
+	     <td><a href="" target="_blank">尚亚</a></td>
+		 <td colspan="5">不能充提币，勿入坑</td>
+	  </tr> 
 	 
 </table>
 <div id="messageTitle">留言板——人人可参与 (关注微信公众号：币圈风云，回复：留言)</div>
@@ -216,7 +220,7 @@ function getTKC(){
 	
 	$.ajax({
 		type : "post",
-		url : "http://tkc.izdvy.cn/getMessage.php",
+		url : "http://tkc.xsazz.cn/getMessage.php",
 		timeout:1800,
 		dataType : "jsonp",
 		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
@@ -244,7 +248,7 @@ function getTKC(){
 	//CEO
 	$.ajax({
 		type : "post",
-		url : "http://tkc.izdvy.cn",
+		url : "http://tkc.xsazz.cn",
 		timeout:1800,
 		dataType : "jsonp",
 		jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
@@ -270,7 +274,7 @@ function getTKC(){
 			//if(ceoUpdate >= 6){
 			   //update	
 			    console.log(ceoUpdate);
-			    $.ajax({url:"http://tkc.izdvy.cn/updateTKC.php",dataType:"jsonp"});
+			    $.ajax({url:"http://tkc.xsazz.cn/updateTKC.php",dataType:"jsonp"});
 			//}
 			
 		},
@@ -294,6 +298,7 @@ function getTKC(){
 	
 	
 	//尚亚
+	/*	
 	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=USDT", 
 	success:function(data){
 		hksyData = data;
@@ -318,7 +323,19 @@ function getTKC(){
 		       }});
 		
 	}});
+	*/
 	
+	//数字币
+	var digifinexData = $.ajax({url:"https://www.digifinex.com/cron/currency_list_handle?basemark=USDT&trademark=EOS&block=1", 
+	success:function(data){
+		digifinexData = data;
+		var digifinexPrice = digifinexData.currency_list.new_price;
+		var digifinexMax = digifinexData.currency_list.sell_one_price;
+		var digifinexMin = digifinexData.currency_list.buy_one_price;
+		var digifinexAmount = digifinexData.currency_list.24H_done_num;
+		var digifinexRise = digifinexData.currency_list.24H_change_rate;
+		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
+	}});
 	
 	
 	
@@ -343,7 +360,7 @@ $(document).ready(function(){
 	},50);
 	setInterval(function(){
 	    getTKC();
-	}, 6000);
+	}, 10000);
   
 });
 </script>

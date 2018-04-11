@@ -331,12 +331,12 @@ function getTKC(){
 		digifinexData = data;
 		var basermb = digifinexData.currency_list.basermb;
 		var digifinexPrice = digifinexData.currency_list.new_price * basermb;
-		digifinexPrice = digifinexPrice.toString().substring(0,4);
+		digifinexPrice = digifinexPrice.toString().substring(0,5);
 		var digifinexMax = digifinexData.currency_list.sell_one_price * basermb;
-		digifinexMax = digifinexMax.toString().substring(0,4);
+		digifinexMax = digifinexMax.toString().substring(0,5);
 		var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
-		digifinexMin = digifinexMin.toString().substring(0,4);
-		var digifinexAmount = digifinexData.currency_list."24H_done_num";
+		digifinexMin = digifinexMin.toString().substring(0,5);
+		var digifinexAmount = digifinexData.currency_list["24H_done_num"];
 		var digifinexRise = 2;
 		setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
 	}});

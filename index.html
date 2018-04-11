@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>铁裤衩助手_TKC助手</title>
-    <meta name="description" content="铁裤衩TKC入门导航，铁裤衩助手，TKC助手，赤币助手">
-    <meta name="keywords" content="铁裤衩,铁裤衩助手，TKC助手，赤链，赤币， 比特币, 莱特币, 以太坊, TKC, 数字货币投资">
+    <meta name="description" content="铁裤衩TKC入门导航，铁裤衩助手，TKC助手，figtoo，无花果figtoo，赤币助手">
+    <meta name="keywords" content="铁裤衩,铁裤衩助手，TKC助手，figtoo，无花果figtoo，赤链，赤币， 比特币, 莱特币, 以太坊, TKC, 数字货币投资">
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
@@ -14,7 +14,7 @@
 		table td{line-height:2em;}
 		table tr:nth-child(odd){background:#F4F4F4;}
 		table td:nth-child(even){color:#C00;}
-		table tr:nth-child(5){background:#73B1E0;color:#FFF;}
+		table tr:nth-child(6){background:#73B1E0;color:#FFF;}
 		table tr:hover{background:#73B1E0;color:#FFF;}
 		table td,table th{border:1px solid #EEE;}
 		.top{margin: 0 auto; background:#ccc;}
@@ -74,6 +74,14 @@
 		 <td><span id="J_min"></span>元</td>
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span>%</td>
+	 </tr>
+	<tr id="J_digifinex">
+	     <td><a href="https://www.digifinex.com/from/8vgr4e" target="_blank">数字币</a></td>
+		 <td><span id="J_price"></span>元</td>
+		 <td><span id="J_max"></span>元</td>
+		 <td><span id="J_min"></span>元</td>
+		 <td><span id="J_amount">对接中</span></td>
+		 <td><span id="J_rise"></span>起飞%</td>
 	 </tr>
 	 <tr id="J_hksy">
 	     <td><a href="" target="_blank">尚亚</a></td>
@@ -290,6 +298,7 @@ function getTKC(){
 	
 	
 	//尚亚
+	/*	
 	var hksyData = $.ajax({url:"https://api.hksy.com/pc/coinMarket/v1/selectCoinMarketbyCoinName?coinName=TKC&payCoinName=USDT", 
 	success:function(data){
 		hksyData = data;
@@ -314,7 +323,26 @@ function getTKC(){
 		       }});
 		
 	}});
+	*/
 	
+	//数字币
+	var digifinexData = $.ajax({url:"https://www.digifinex.com/cron/currency_list_handle?basemark=ETH&trademark=TKC&block=1", 
+	success:function(data){
+		digifinexData = data;
+		var basermb = digifinexData.currency_list.basermb;
+		var digifinexPrice = digifinexData.currency_list.new_price * basermb;
+		if(digifinexPrice){
+			digifinexPrice = digifinexPrice.toString().substring(0,5);
+			var digifinexMax = digifinexData.currency_list.sell_one_price * basermb;
+			digifinexMax = digifinexMax.toString().substring(0,5);
+			var digifinexMin = digifinexData.currency_list.buy_one_price * basermb;
+			digifinexMin = digifinexMin.toString().substring(0,5);
+			var digifinexAmount = digifinexData.currency_list["24H_done_num"];
+			digifinexAmount = digifinexAmount.toString().substring(0,8);
+			var digifinexRise = digifinexData.currency_list["24H_change_rate"];
+			setContent("#J_digifinex", digifinexPrice, digifinexMax, digifinexMin, digifinexAmount, digifinexRise);
+		}
+	}});
 	
 	
 	

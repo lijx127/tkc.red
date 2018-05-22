@@ -289,11 +289,12 @@ function getTKC(){
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/indexmarket.html?_t=92",
 	success:function(data){
 		fubtData = data;
-		var fubtPrice = fubtData.data[6].price;
-		var fubtMax = fubtData.data[6].sell;
-		var fubtMin = fubtData.data[6].buy;
-		var fubtAmount = fubtData.data[6].total;
-		var fubtRise = fubtData.data[6].rose.toString().substring(0,4);
+		var fubtIndex = 9;
+		var fubtPrice = fubtData.data[fubtIndex].price;
+		var fubtMax = fubtData.data[fubtIndex].sell;
+		var fubtMin = fubtData.data[fubtIndex].buy;
+		var fubtAmount = fubtData.data[fubtIndex].total;
+		var fubtRise = fubtData.data[fubtIndex].rose.toString().substring(0,4);
 		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 	}});
 	

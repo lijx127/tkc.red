@@ -289,7 +289,7 @@ function getTKC(){
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/indexmarket.html?_t=92",
 	success:function(data){
 		fubtData = data;
-		var fubtIndex = 9;
+		var fubtIndex = 10;
 		var fubtPrice = fubtData.data[fubtIndex].price;
 		var fubtMax = fubtData.data[fubtIndex].sell;
 		var fubtMin = fubtData.data[fubtIndex].buy;

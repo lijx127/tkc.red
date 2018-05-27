@@ -350,26 +350,7 @@ function getTKC(){
 	
 	*/
 	
-	//比特金融
-    
-	$.ajax({
-	type:'post',
-	url:"http://www.redchain.club/Index/tkcExchange.html", 
-	success(res){
-		$('#J_price').html(res.data.ceo_price);
-		$('#ceo_buy').html(res.data.ceo_buy_price+"<br/>("+parseFloat(res.data.ceo_buy_num).toFixed(2)+")");
-		$('#ceo_sell').html(res.data.ceo_sell_price+"<br/>("+parseFloat(res.data.ceo_sell_num).toFixed(2)+")");
-		if(res.data.ceo_riseFall<0){
-			$('#ceo_riseFall').css('color','green');
-			$('#ceo_deal').html(res.data.ceo_deal+"<br/>(<span style='color:green;'>"+res.data.ceo_riseFall+"%</span>)");
-		}else{
-			$('#ceo_riseFall').css('color','red');
-			$('#ceo_deal').html(res.data.ceo_deal+"<br/>(<span style='color:red;'>"+res.data.ceo_riseFall+"%</span>)");
-		}
-	},
-	error:function(){
-		console.log("error");
-	});
+	
 	
 }
 $(document).ready(function(){

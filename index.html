@@ -285,7 +285,7 @@ function getTKC(){
 			//if(ceoUpdate >= 6){
 			   //update	
 			    console.log(ceoUpdate);
-			    $.ajax({url:"http://tkc.xsazz.cn/updateTKC.php",dataType:"jsonp"});
+			   
 			//}
 			
 		},
@@ -368,6 +368,9 @@ $(document).ready(function(){
 	setInterval(function(){
 	    getTKC();
 	}, 15000);
+	setInterval(function(){
+	 $.ajax({url:"http://tkc.xsazz.cn/updateTKC.php",dataType:"jsonp"});
+	},50000);
   
 });
 </script>

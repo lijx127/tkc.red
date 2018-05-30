@@ -59,14 +59,7 @@
 		 <td><span id="J_amount"></span></td>
 		 <td><span id="J_rise"></span></td>
 	 </tr>
-	<tr id="J_ceo">
-	     <td><a href="https://ceo.bi/tkc.jsp" target="_blank">CEO</a></td>
-		 <td><span id="J_price">6月1</span></td>
-		 <td><span id="J_max">恢复</span></td>
-		 <td><span id="J_min">显示</span></td>
-		 <td><span id="J_amount"></span></td>
-		 <td><span id="J_rise"></span>%</td>
-	 </tr>
+	
 	<tr id="J_gaia">
 	     <td><a href="" target="_blank">盖亚</a></td>
 		 <td><span id="J_price">期待</span></td>
@@ -76,6 +69,14 @@
 		 <td><span id="J_rise"></span>%</td>
 	 </tr>
 	<!--
+	<tr id="J_ceo">
+	     <td><a href="https://ceo.bi/tkc.jsp" target="_blank">CEO</a></td>
+		 <td><span id="J_price">6月1</span></td>
+		 <td><span id="J_max">恢复</span></td>
+		 <td><span id="J_min">显示</span></td>
+		 <td><span id="J_amount"></span></td>
+		 <td><span id="J_rise"></span>%</td>
+	 </tr>
 	<tr id="J_digifinex">
 	     <td><a href="https://www.digifinex.com/trade/ETH/TKC" target="_blank">数字币</a></td>
 		 <td><span id="J_price"></span></td>
@@ -257,6 +258,7 @@ function getTKC(){
 		}
 	});
 	//CEO
+	/*
 	$.ajax({
 		type : "post",
 		url : "http://tkc.xsazz.cn",
@@ -294,12 +296,12 @@ function getTKC(){
 			
 		}
 	});
-	
+	*/
 	//富比特
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/indexmarket.html?_t=92",
 	success:function(data){
 		fubtData = data;
-		var fubtIndex = 10;
+		var fubtIndex = 13;
 		var fubtPrice = fubtData.data[fubtIndex].price;
 		var fubtMax = fubtData.data[fubtIndex].sell;
 		var fubtMin = fubtData.data[fubtIndex].buy;
@@ -368,9 +370,11 @@ $(document).ready(function(){
 	setInterval(function(){
 	    getTKC();
 	}, 15000);
+	/*
 	setInterval(function(){
 	 $.ajax({url:"http://tkc.xsazz.cn/updateTKC.php",dataType:"jsonp"});
 	},50000);
+	*/
   
 });
 </script>

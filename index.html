@@ -223,7 +223,7 @@ function getTKC(){
 		success:function(data){
 			boothData2 = data;
 			var boothMax = boothData2.data.asks[0][0];
-			var boothMin = boothData2.data.bids[0][0];
+			var boothMin = boothData2.data.bids[0][29];
 			setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
 		}});
 		

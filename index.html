@@ -52,7 +52,7 @@
 		 <th>涨跌幅</th>
 	 </tr>
 	 <tr id="J_booth">
-	     <td><a href="https://www.booth.red/" target="_blank">集市</a></td>
+	     <td><a href="https://www.booth.red/" target="_blank">盖亚</a></td>
 		 <td><span id="J_price"></span></td>
 		 <td><span id="J_max"></span></td>
 		 <td><span id="J_min"></span></td>
@@ -213,19 +213,15 @@ function getTKC(){
 	var nowTime = getNowFormatDate();
 	$("#J_uptime").text(nowTime);
 	//集市
-	var boothData = $.ajax({url:"https://www.booth.red/api/v1/account/coin/ticker/coin?coinType=0", 
+	var boothData = $.ajax({url:"https://www.gaia.kim/api/gate/market/detail?fromCoin=GT&toCoin=TKC", 
 	success:function(data){
 		boothData = data;		
-		var boothPrice = boothData.data.price;
-		var boothAmount = boothData.data.trade_amount;
-		var boothRise = boothData.data.rise_fall;
-		var boothData2 = $.ajax({url:"https://www.booth.red/api/v1/account/coin/trades?coinType=0&ticks=-1&deviceType=3",
-		success:function(data){
-			boothData2 = data;
-			var boothMax = boothData2.data.sells[0].price;
-			var boothMin = boothData2.data.buys[0].price;
-			setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
-		}});
+		var boothPrice = boothData.data.current;
+		var boothAmount = boothData.data.vol;
+		var boothRise = boothData.data.rangeRatio;
+		var boothMax = boothData.data.high;
+		var boothMin = boothData.data.low;
+		setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
 		
 	}});
 	//留言板

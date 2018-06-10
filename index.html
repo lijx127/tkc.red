@@ -219,9 +219,13 @@ function getTKC(){
 		var boothPrice = boothData.data.current;
 		var boothAmount = boothData.data.vol;
 		var boothRise = boothData.data.rangeRatio;
-		var boothMax = boothData.data.high;
-		var boothMin = boothData.data.low;
-		setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+		var boothData2 = $.ajax({url:"https://www.gaia.kim/api/match/v1/market/profundity?coinTypeName=TKC&ticks=1528636233492&deviceType=3&payCoinName=GT&min=0&time_id=0",
+		success:function(data){
+			boothData2 = data;
+			var boothMax = boothData2.data.asks[0][0];
+			var boothMin = boothData2.data.bids[0][0];
+			setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
+		}});
 		
 	}});
 	//留言板

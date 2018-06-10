@@ -225,7 +225,7 @@ function getTKC(){
 		success:function(data){
 			boothData2 = data;
 			var boothMax = boothData2.data.asks[0][0];
-			var asksLength = oothData2.data.asks.length;
+			var asksLength = boothData2.data.asks.length;
 			asksLength = asksLength -1;
 			var htmlSell = "";
 			for(var i = asksLength; i >= 0; i --){

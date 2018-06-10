@@ -101,6 +101,8 @@
 	  </tr> 
 	 -->
 </table>
+	<ul class="ul_sell" id="J_ul_sell"></ul>
+	
 <div id="messageTitle">留言板——人人可参与 (关注微信公众号：币圈风云，回复：留言)</div>
 <ul id="J_message">
 	<li><span id="J_price"></span> —— <span id="time1"></span></li>
@@ -223,6 +225,14 @@ function getTKC(){
 		success:function(data){
 			boothData2 = data;
 			var boothMax = boothData2.data.asks[0][0];
+			var asksLength = oothData2.data.asks.length;
+			asksLength = asksLength -1;
+			var htmlSell = "";
+			for(var i = asksLength; i >= 0; i --){
+				var sellI = i + 1;
+				htmlSell = htmlSell + "<li>" + "卖"+ sellI + “ ” + boothData2.data.asks[i][0] + "," +boothData2.data.asks[i][0] + "</li>";
+			}
+			$("#J_ul_sell").html(htmlSell);	
 			var bidsLength = boothData2.data.bids.length;
 			bidsLength = bidsLength -1;
 			var boothMin = boothData2.data.bids[bidsLength][0];

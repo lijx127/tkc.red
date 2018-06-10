@@ -296,7 +296,7 @@ function getTKC(){
 			
 		}
 	});
-	*/
+	
 	//富比特
 	var fubtData = $.ajax({url:"https://www.fubt.top/real/indexmarket.html?_t=92",
 	success:function(data){
@@ -309,6 +309,7 @@ function getTKC(){
 		var fubtRise = fubtData.data[fubtIndex].rose.toString().substring(0,4);
 		setContent("#J_fubt", fubtPrice, fubtMax, fubtMin, fubtAmount, fubtRise);
 	}});
+	*/
 	
 	
 	//尚亚
@@ -369,7 +370,7 @@ $(document).ready(function(){
 	},50);
 	setInterval(function(){
 	    getTKC();
-	}, 15000);
+	}, 5000);
 	/*
 	setInterval(function(){
 	 $.ajax({url:"http://tkc.xsazz.cn/updateTKC.php",dataType:"jsonp"});

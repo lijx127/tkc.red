@@ -34,8 +34,10 @@
    		box-shadow: 5px 5px 5px;		
 		}
 		#J_message li { font-size:1.2rem;line-height:2.5rem;border-bottom: 1px dashed;padding-top: 15px;}
-		.ul_sell {height: 200px; width:200px; overflow:scroll;}
-		.ul_sell li {font-size:13px; height: 15px; border:1px dashed #ccc;}
+		.ul_sell {height: 200px; width:300px; overflow:scroll;}
+		.ul_sell li {font-size:1.2rem; height: 2em; border:1px dashed #ccc;}
+		.ul_bids {height: 200px; width:300px; overflow:scroll;}
+		.ul_bids li {font-size:1.2rem; height: 2em; border:1px dashed #ccc;}
 	</style>
   </head>
 <body>
@@ -104,6 +106,7 @@
 	 -->
 </table>
 	<ul class="ul_sell" id="J_ul_sell"></ul>
+	<ul class="ul_bids" id="J_ul_bids"></ul>
 	
 <div id="messageTitle">留言板——人人可参与 (关注微信公众号：币圈风云，回复：留言)</div>
 <ul id="J_message">
@@ -237,6 +240,11 @@ function getTKC(){
 			$("#J_ul_sell").html(htmlSell);	
 			var bidsLength = boothData2.data.bids.length;
 			bidsLength = bidsLength -1;
+			for(var i = 0; i <= bidsLength; i ++){
+				var bidsI = i + 1;
+				htmlSell = htmlSell + "<li>" + "买"+ bidsI + "  " + boothData2.data.bids[i][0] + " , " +boothData2.data.bids[i][1] + "</li>";
+			}
+			$("#J_ul_bids").html(htmlSell);	
 			var boothMin = boothData2.data.bids[bidsLength][0];
 			setContent("#J_booth", boothPrice, boothMax, boothMin, boothAmount, boothRise);
 		}});

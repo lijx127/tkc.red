@@ -239,7 +239,7 @@ function getTKC(){
 			var htmlSell = "";
 			for(var i = asksLength; i >= 0; i --){
 				var sellI = i + 1;
-				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;" + boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" +boothData2.data.asks[i][1] + "</li>" + htmlSell;
+				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;&nbsp;&nbsp;" + boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" +boothData2.data.asks[i][1] + "</li>" + htmlSell;
 			}
 			$("#J_ul_sell").html(htmlSell);	
 			var bidsLength = boothData2.data.bids.length;
@@ -248,7 +248,7 @@ function getTKC(){
 			for(var i = 0; i <= bidsLength; i ++){
 				var bidsI = i + 1;
 				var bidsIndex = bidsLength - i;
-				htmlBids = htmlBids + "<li>" + "买"+ bidsI + "  &nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][0].toFixed(4) + " &nbsp;, &nbsp;" +boothData2.data.bids[bidsIndex][1] + "</li>";
+				htmlBids = htmlBids + "<li>" + "买"+ bidsI + "  &nbsp;&nbsp;&nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][0].toFixed(4) + " &nbsp;, &nbsp;" +boothData2.data.bids[bidsIndex][1] + "</li>";
 			}
 			$("#J_ul_bids").html(htmlBids);	
 			var boothMin = boothData2.data.bids[bidsLength][0];

@@ -248,7 +248,7 @@ function getTKC(){
 			for(var i = 0; i <= bidsLength; i ++){
 				var bidsI = i + 1;
 				var bidsIndex = bidsLength - i;
-				htmlBids = htmlBids + "<li>" + "买"+ bidsI + "  &nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][0] + " &nbsp;, &nbsp;" +boothData2.data.bids[bidsIndex][1] + "</li>";
+				htmlBids = htmlBids + "<li>" + "买"+ bidsI + "  &nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][0].toFixed(4) + " &nbsp;, &nbsp;" +boothData2.data.bids[bidsIndex][1] + "</li>";
 			}
 			$("#J_ul_bids").html(htmlBids);	
 			var boothMin = boothData2.data.bids[bidsLength][0];

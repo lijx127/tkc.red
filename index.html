@@ -241,7 +241,7 @@ function getTKC(){
 				var sellI = i + 1;
 				var tkcNum =0;
 				if(i > 0){
-					tkcNum = boothData2.data.asks[i][1] - boothData2.data.asks[i-1][1];
+					tkcNum = boothData2.data.asks[i-1][1] - boothData2.data.asks[i][1];
 				}
 				else{
 					tkcNum = boothData2.data.asks[i][1];

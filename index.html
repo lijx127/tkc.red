@@ -35,9 +35,9 @@
 		}
 		#J_message li { font-size:1.2rem;line-height:2.5rem;border-bottom: 1px dashed;padding-top: 15px;}
 		.sellBuy {height: 610px;}
-		.ul_sell {height: 600px; width:300px; overflow:scroll; float:left;}
+		.ul_sell {height: 600px; width:500px; overflow:scroll; float:left;}
 		.ul_sell li {font-size:1.2rem; height: 2em; line-height:2rem; border:1px dashed #ccc;}
-		.ul_bids {height: 600px; width:300px; overflow:scroll; float:left; margin-left:20px;}
+		.ul_bids {height: 600px; width:500px; overflow:scroll; float:left; margin-left:20px;}
 		.ul_bids li {font-size:1.2rem; height: 2em; line-height:2rem; border:1px dashed #ccc;}
 	</style>
   </head>
@@ -236,7 +236,7 @@ function getTKC(){
 			var boothMax = boothData2.data.asks[0][0];
 			var asksLength = boothData2.data.asks.length;
 			asksLength = asksLength -1;
-			var htmlSell = "";
+			var htmlSell = "<li>卖单  &nbsp;&nbsp;&nbsp;&nbsp;价格(GT)&nbsp;&nbsp;&nbsp;&nbsp;数量(TKC)&nbsp;&nbsp;&nbsp;&nbsp;累计(TKC)</li>";
 			for(var i = asksLength; i >= 0; i --){
 				var sellI = i + 1;
 				var tkcNum =0;
@@ -246,7 +246,7 @@ function getTKC(){
 				else{
 					tkcNum = boothData2.data.asks[i][1];
 				}
-				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;&nbsp;&nbsp;" +  boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" + tkcNum.toFixed(4)  + "</li>" + htmlSell;
+				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;&nbsp;&nbsp;" +  boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" + tkcNum.toFixed(4)  + "&nbsp;&nbsp;,&nbsp;&nbsp;" + boothData2.data.asks[i][1] + "</li>" + htmlSell;
 			}
 			$("#J_ul_sell").html(htmlSell);	
 			var bidsLength = boothData2.data.bids.length;

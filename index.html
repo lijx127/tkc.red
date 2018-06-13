@@ -246,7 +246,7 @@ function getTKC(){
 				else{
 					tkcNum = boothData2.data.asks[i][1];
 				}
-				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;&nbsp;&nbsp;" +  boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" + tkcNum + "</li>" + htmlSell;
+				htmlSell = "<li>" + "卖"+ sellI + "  &nbsp;&nbsp;&nbsp;&nbsp;" +  boothData2.data.asks[i][0].toFixed(4) + "&nbsp; , &nbsp;" + tkcNum.toFixed(7)  + "</li>" + htmlSell;
 			}
 			$("#J_ul_sell").html(htmlSell);	
 			var bidsLength = boothData2.data.bids.length;

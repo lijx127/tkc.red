@@ -253,15 +253,16 @@ function getTKC(){
 			var bidsLength = boothData2.data.bids.length;
 			bidsLength = bidsLength -1;
 			var htmlBids = "";
-			for(var i = 0; i < bidsLength; i ++){
+			for(var i = 0; i <= bidsLength; i ++){
 				var bidsI = i + 1;
 				var bidsIndex = bidsLength - i;
 				var tkcNum =0;
 				if(i < bidsLength){
-					tkcNum = boothData2.data.bids[bidsIndex][1];
+					
+					tkcNum = boothData2.data.bids[bidsIndex -1][1] - boothData2.data.bids[bidsIndex][1];
 				}
 				else{
-					tkcNum = boothData2.data.bids[bidsIndex -1][1] - boothData2.data.bids[bidsIndex][1];
+					tkcNum = boothData2.data.bids[bidsIndex][1];
 				}
 				htmlBids = htmlBids + "<li>" + "买"+ bidsI + "  &nbsp;&nbsp;&nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][0].toFixed(4) + " &nbsp;, &nbsp;" +tkcNum.toFixed(4)   + "&nbsp;&nbsp;,&nbsp;&nbsp;" + boothData2.data.bids[bidsIndex][1] + "</li>";
 			}

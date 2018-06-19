@@ -255,7 +255,7 @@ function getTKC(){
 			var htmlBids = "";
 			for(var i = 0; i <= bidsLength; i ++){
 				var bidsI = i + 1;
-				var bidsIndex = bidsLength - bidsI;
+				var bidsIndex = bidsLength - i;
 				var tkcNum =0;
 				if(i < bidsLength){
 					tkcNum = boothData2.data.bids[bidsIndex -1][1] - boothData2.data.bids[bidsIndex][1];

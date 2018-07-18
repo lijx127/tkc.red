@@ -224,13 +224,13 @@ function getTKC(){
 	var nowTime = getNowFormatDate();
 	$("#J_uptime").text(nowTime);
 	//集市
-	var boothData = $.ajax({url:"https://www.gaia.kim/api/gate/market/detail?fromCoin=GT&toCoin=TKC", 
+	var boothData = $.ajax({url:"https://www.gaia.kim/api/gate/market/detail?fromCoin=GT&toCoin=RED", 
 	success:function(data){
 		boothData = data;		
 		var boothPrice = boothData.data.current;
 		var boothAmount = boothData.data.vol;
 		var boothRise = boothData.data.rangeRatio;
-		var boothData2 = $.ajax({url:"https://www.gaia.kim/api/match/v1/market/profundity?coinTypeName=TKC&ticks=1528636233492&deviceType=3&payCoinName=GT&min=0&time_id=0",
+		var boothData2 = $.ajax({url:"https://www.gaia.kim/api/match/v1/market/profundity?coinTypeName=RED&ticks=1528636233492&deviceType=3&payCoinName=GT&min=0&time_id=0",
 		success:function(data){
 			boothData2 = data;
 			var boothMax = boothData2.data.asks[0][0];
